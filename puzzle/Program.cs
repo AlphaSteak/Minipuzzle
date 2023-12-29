@@ -13,49 +13,23 @@ public class key
 }
 class MyClass
 {
-
-
     static void Main()
     {
-        string retrunfilepath = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\results\Result" + DateTime.Now.ToBinary(); 
-        retrunfilepath = $@"..\..\..\Result\obr2-barcelona-park-result" + DateTime.Now.ToBinary();
+        //should be CLI args
+        int num = 1; string name = "terc"; 
         /*
-        string filepath0 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr1-terc\b-terc.jpg";
-        string filepath1 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr1-terc\c-terc.jpg";
-        string filepath2 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr1-terc\d-terc.jpg";
-        string filepath3 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr1-terc\z-terc.jpg";
-        string filepath0 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr2-barcelona-park\0-barcelona-park.jpg";
-        string filepath1 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr2-barcelona-park\1-barcelona-park.jpg";
-        string filepath2 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr2-barcelona-park\2-barcelona-park.jpg";
-        string filepath3 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr2-barcelona-park\3-barcelona-park.jpg";
+        int num = 2; string name = "barcelona-park";
+        int num = 3; string name = "cz-pl-de";
+        int num = 4; string name = "ups";
+        int num = 5; string name = "hracholusky";
         */
-        string[] filepath = new string[4];
+        string retrunfilepath = $@"..\..\..\Result\obr{num}-{name}-result" + DateTime.Now.ToBinary();
+        Bitmap[] BitmapArray = new Bitmap[4];
         for (int i = 0; i < 4; i++)
         {
-            filepath[i] = $@"..\..\..\obr2-barcelona-park\{i}-barcelona-park.jpg";       
+            BitmapArray[i] = new Bitmap($@"..\..\..\obr{num}-{name}\{i}-{name}.jpg");
         }
-        /*
-       string filepath0 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr3-cz-pl-de\0-cz-pl-de.jpg";
-       string filepath1 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr3-cz-pl-de\1-cz-pl-de.jpg";
-       string filepath2 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr3-cz-pl-de\2-cz-pl-de.jpg";
-       string filepath3 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr3-cz-pl-de\3-cz-pl-de.jpg";
-
-       string filepath0 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr4-ups\0-ups.jpg";
-       string filepath1 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr4-ups\1-ups.jpg";
-       string filepath2 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr4-ups\2-ups.jpg";
-       string filepath3 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr4-ups\3-ups.jpg";
-
-       string filepath0 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr5-hracholusky\0-hracholusky.jpg";
-       string filepath1 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr5-hracholusky\1-hracholusky.jpg";
-       string filepath2 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr5-hracholusky\2-hracholusky.jpg";
-       string filepath3 = @"C:\Users\sichr_dwu16fi\Desktop\MiniPuzzle\obr5-hracholusky\3-hracholusky.jpg";
-       */
-        Bitmap[] BitmapArray = new Bitmap[4];
-        BitmapArray[0] = new Bitmap(filepath[0]);
-        BitmapArray[1] = new Bitmap(filepath[1]);
-        BitmapArray[2] = new Bitmap(filepath[2]);
-        BitmapArray[3] = new Bitmap(filepath[3]);
-        int SimilarityCoefficient = 8;
+        int SimilarityCoefficient = 8; //hyperparametr, how close in RGB should the pixels be to be considered equal, should also be arg with default
         foreach (var item in BestMatch(4, BitmapArray, SimilarityCoefficient))
         {
             Console.WriteLine(item);
